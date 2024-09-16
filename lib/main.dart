@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quotes_app/routes/all_routes.dart';
-import 'package:quotes_app/views/home_page/home_page.dart';
 
 void main() {
   runApp(const MyApp());

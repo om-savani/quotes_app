@@ -1,7 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:quotes_app/utils/utils.dart';
+
+import '../../routes/all_routes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -50,32 +53,42 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Padding(
           padding: const EdgeInsets.all(16),
-          child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-            ),
-            itemCount: allQuotes.length,
-            itemBuilder: (context, index) => Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        allQuotes[index].quote,
-                        maxLines: 8,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+          child: Flexible(
+            child: CardSwiper(
+              cardsCount: allQuotes.length,
+              cardBuilder: (BuildContext context,
+                      int index,
+                      int horizontalOffsetPercentage,
+                      int verticalOffsetPercentage) =>
+                  GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.detailpage);
+                  arguments:
+                  allQuotes[index];
+                },
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            allQuotes[index].quote,
+                            maxLines: 8,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Text(
+                          textAlign: TextAlign.end,
+                          "~ ${allQuotes[index].author}",
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      textAlign: TextAlign.end,
-                      "~ ${allQuotes[index].author}",
-                      style: TextStyle(
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
