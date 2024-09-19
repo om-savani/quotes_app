@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   swipable_stack: ^2.0.0
   flutter_card_swiper: ^7.0.1
+  flutter_colorpicker: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -91,5 +92,15 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: lib/assets/fonts/Roboto-Regular.ttf
+    - family: Inriasans
+      fonts:
+        - asset: lib/assets/fonts/InriaSans-Regular.ttf
+    - family: Sofadione
+      fonts:
+        - asset: lib/assets/fonts/SofadiOne-Regular.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
